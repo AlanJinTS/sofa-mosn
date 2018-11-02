@@ -200,7 +200,7 @@ func (rri *RouteRuleImplBase) MetadataMatchCriteria(clusterName string) types.Me
 }
 
 func (rri *RouteRuleImplBase) UpdateMetaDataMatchCriteria(metadata map[string]string) error {
-	if len(metadata) == 0 {
+	if metadata == nil {
 		return fmt.Errorf("UpdateMetaDataMatchCriteria fail: metadata is nil")
 	}
 

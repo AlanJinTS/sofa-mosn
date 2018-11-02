@@ -82,8 +82,8 @@ func (l *randomLoadBalancer) ChooseHost(context types.LoadBalancerContext) types
 	return hosts[hostIdx]
 }
 
-func (l *randomLoadBalancer) GetHostsNumber(metadata interface{}) uint32 {
-	return 0
+func (r *randomLoadBalancer) GetHostsNumber(metadata interface{}) uint32 {
+	return uint32(len(r.prioritySet.HostSetsByPriority()))
 }
 
 // TODO: more loadbalancers@boqin
@@ -134,8 +134,8 @@ func (l *roundRobinLoadBalancer) ChooseHost(context types.LoadBalancerContext) t
 	return selectedHost
 }
 
-func (l *roundRobinLoadBalancer) GetHostsNumber(metadata interface{}) uint32 {
-	return 0
+func (r *roundRobinLoadBalancer) GetHostsNumber(metadata interface{}) uint32 {
+	return uint32(len(r.prioritySet.HostSetsByPriority()))
 }
 
 /*
@@ -277,6 +277,6 @@ func (l *smoothWeightedRRLoadBalancer) ChooseHost(context types.LoadBalancerCont
 }
 
 
-func (l *smoothWeightedRRLoadBalancer) GetHostsNumber(metadata interface{}) uint32 {
-	return 0
+func (s *smoothWeightedRRLoadBalancer) GetHostsNumber(metadata interface{}) uint32 {
+	return uint32(len(s.prioritySet.HostSetsByPriority()))
 }
